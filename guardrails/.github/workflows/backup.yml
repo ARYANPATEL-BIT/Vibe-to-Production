@@ -1,0 +1,51 @@
+# OPTIONAL: nightly encrypted Supabase backup, kept as a private workflow artifact for 14 days.
+# Only use this in a PRIVATE repository. Read guardrails/README.md before enabling.
+#
+# Needs two repository secrets (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_DB_URL     Session pooler connection string (Supabase -> Connect -> Session pooler).
+#                       Use the pooler: GitHub runners have no IPv6, and the direct connection needs it.
+#   BACKUP_PASSPHRASE   A long random passphrase. Store a copy in your password manager:
+#                       without it, the backups can't be decrypted.
+name: Database backup
+
+on:
+  schedule:
+    - cron: "41 20 * * *" # daily at 20:41 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: supabase/setup-cli@v3
+        with:
+          version: latest
+
+      - name: Dump roles, schema and data
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          mkdir backup
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/roles.sql --role-only
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/schema.sql
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/data.sql --data-only --use-copy
+
+      - name: Compress and encrypt
+        env:
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          tar -czf backup.tar.gz backup
+          gpg --batch --yes --pinentry-mode loopback --symmetric --cipher-algo AES256 \
+            --passphrase "$BACKUP_PASSPHRASE" -o backup.tar.gz.gpg backup.tar.gz
+          rm -rf backup backup.tar.gz
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: db-backup-${{ github.run_id }}
+          path: backup.tar.gz.gpg
+          retention-days: 14
+          if-no-files-found: error

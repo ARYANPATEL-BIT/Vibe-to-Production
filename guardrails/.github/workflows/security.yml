@@ -1,0 +1,40 @@
+# Secret scanning and static security analysis. Free, no accounts needed.
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 3 * * 1" # Mondays 03:17 UTC: full re-scan with the latest rules
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: Secret scan (TruffleHog)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # full history: a secret deleted later is still leaked
+
+      - uses: trufflesecurity/trufflehog@v3.99.7
+        with:
+          extra_args: --results=verified,unknown
+
+  code:
+    name: Static analysis (Semgrep CE)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: semgrep/semgrep
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Scan for insecure code patterns
+        run: semgrep scan --config auto --error
