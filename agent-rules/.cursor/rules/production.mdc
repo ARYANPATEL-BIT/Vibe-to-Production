@@ -1,0 +1,18 @@
+---
+description: Production-readiness rules for every change in this project
+alwaysApply: true
+---
+
+Follow every rule in AGENTS.md at the project root. The ones you must never skip:
+
+- Secrets only in server-side env vars. Never in code, never prefixed NEXT_PUBLIC_/VITE_/EXPO_PUBLIC_/PUBLIC_.
+- Every server endpoint, in order: authenticate → authorize this user for this record → rate limit → validate input with a schema → do the work.
+- Every table with user data: Row Level Security on, explicit per-action policies, `with check` on updates. Never `using (true)`.
+- Never use the admin/service/secret database key for normal user requests.
+- Users can never change their own role, plan, credits or record ownership.
+- No string-built SQL, no unsanitized HTML from users, no redirects to user-supplied URLs.
+- Payments: server-side prices, access granted only by verified idempotent webhooks.
+- Every list query has a limit; no queries inside loops; indexes for common filters.
+- Never modify, skip or delete a test to make it pass.
+- Ask before anything destructive or irreversible. Don't commit or push unless asked.
+- Done = lint, typecheck, tests and build pass, plus a plain-language summary of security-relevant changes and what wasn't verified.
