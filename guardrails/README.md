@@ -1,5 +1,7 @@
 # Guardrails
 
+The easiest way to install this is the one-prompt install in [`INSTALL.md`](../INSTALL.md) (see the [Quick start](../README.md#install-in-one-prompt)). The manual steps follow.
+
 Rules and prompts depend on the AI (and you) paying attention. Guardrails don't. They check the code automatically and block it when something's wrong, no matter who wrote it.
 
 Everything here is free: GitHub Actions minutes on public repos are free and private repos get a monthly free allowance; every tool used is open source.
