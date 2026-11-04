@@ -39,16 +39,28 @@ Plus the knowledge behind them:
 
 ## Quick start
 
+### Install in one prompt
+
+Open your project in your AI coding tool and paste this:
+
+```text
+Clone https://github.com/ARYANPATEL-BIT/Vibe-to-Production into a temporary folder outside this project, then follow its INSTALL.md to set it up here. Don't commit anything.
+```
+
+It works in Claude Code, Cursor, Codex and other agents that can run terminal commands. The agent adds the rules and guardrails, adapts them to your project, runs your checks and tells you what it changed. The full steps it follows are in [`INSTALL.md`](INSTALL.md).
+
+Can't run terminal commands in your tool? Copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into your project by hand, following the README in each folder.
+
 **Starting a new project**
 1. Read [`docs/00-start-here.md`](docs/00-start-here.md) (10 minutes).
 2. Run the [plan prompt](prompts/01-plan.md) to produce your `SPEC.md`.
 3. On Next.js + Supabase? Copy [`template/`](template/) as your starting point.
-4. Copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into your project.
+4. Install the rules and guardrails with the [one-prompt install](#install-in-one-prompt), or copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into your project by hand.
 5. Build one feature at a time with the [build](prompts/02-build.md) and [review](prompts/03-review.md) prompts.
 6. Before launch: [security audit](prompts/04-security-audit.md), [launch review](prompts/05-launch.md), [pre-launch checklist](checklists/pre-launch.md).
 
 **Already built something?**
-1. Copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into it.
+1. Paste the [one-prompt install](#install-in-one-prompt) into your AI tool inside the project. (Manual fallback: copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into it.)
 2. Run the [security audit prompt](prompts/04-security-audit.md) in a fresh AI session.
 3. Do the [two-account test](docs/03-data-access.md#the-two-account-test-do-this-before-every-launch) yourself.
 4. Fix critical and high findings first, then work through the [pre-launch checklist](checklists/pre-launch.md).
