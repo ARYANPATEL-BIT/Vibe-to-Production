@@ -39,9 +39,30 @@ Plus the knowledge behind them:
 
 ## Quick start
 
+### Claude Code users
+
+Install the plugin once. In Claude Code, run:
+
+```text
+/plugin marketplace add ARYANPATEL-BIT/Vibe-to-Production
+/plugin install vibe@vibe-to-prod
+```
+
+Then open your project in Claude Code and run `/vibe:setup`. It adds the rules and guardrails, adapts them to your project, runs your checks and tells you what it changed.
+
+| Command | What it does |
+|---|---|
+| `/vibe:setup` | Installs the rules and guardrails into your project |
+| `/vibe:plan [what you want to build]` | Interviews you and writes a `SPEC.md` before any code is written |
+| `/vibe:build [the feature or fix]` | Plans one feature, waits for your OK, builds it and runs the checks |
+| `/vibe:review` | Reviews your latest changes like a skeptical senior engineer |
+| `/vibe:audit` | Runs a full security audit of the whole app |
+| `/vibe:launch` | Checks you're ready for real customers and gives a go / no-go verdict |
+| `/vibe:incident [what's broken]` | Walks you through a production problem: stop the damage, find the cause, fix it |
+
 ### Install in one prompt
 
-Open your project in your AI coding tool and paste this:
+Using Cursor, Codex or another agent? Open your project in it and paste this:
 
 ```text
 Clone https://github.com/ARYANPATEL-BIT/Vibe-to-Production into a temporary folder outside this project, then follow its INSTALL.md to set it up here. Don't commit anything.
