@@ -10,7 +10,7 @@ pre-commit:
     - name: block env files
       glob: ".env*"
       exclude: [".env.example"]
-      run: echo "Refusing to commit {staged_files}. Real secrets never go in git." && exit 1
+      run: echo 'Refusing to commit {staged_files}. Real secrets never go in git.' && exit 1
 
     - name: lint staged files
       glob: "*.{js,jsx,ts,tsx,mjs,cjs}"
