@@ -1,0 +1,14 @@
+{
+  "name": "vibe-to-prod",
+  "description": "Make vibe-coded apps safe to put in front of paying customers: rules, prompts and automated checks for your AI coding agent.",
+  "owner": {
+    "name": "ARYANPATEL-BIT"
+  },
+  "plugins": [
+    {
+      "name": "vibe",
+      "source": "./",
+      "description": "Production-ready guardrails, prompts and audits for vibe-coded apps"
+    }
+  ]
+}

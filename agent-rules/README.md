@@ -1,5 +1,7 @@
 # Agent rules
 
+The easiest way to install this is the one-prompt install in [`INSTALL.md`](../INSTALL.md) (see the [Quick start](../README.md#install-in-one-prompt)). The manual steps follow.
+
 Drop-in instruction files your AI coding tool reads at the start of every session, so it writes production-grade code by default instead of only when you remember to ask.
 
 | File | Read by | Copy to |
