@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/* Faces come from next/font in app/layout.tsx */
+@theme inline {
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Warm paper and ink, with one accent: vermilion. */
+@theme {
+  --color-fd-background: hsl(40, 30%, 97%);
+  --color-fd-foreground: hsl(30, 12%, 9%);
+  --color-fd-muted: hsl(40, 18%, 93%);
+  --color-fd-muted-foreground: hsl(30, 7%, 36%);
+  --color-fd-popover: hsl(40, 30%, 98.5%);
+  --color-fd-popover-foreground: hsl(30, 12%, 12%);
+  --color-fd-card: hsl(40, 22%, 94.5%);
+  --color-fd-card-foreground: hsl(30, 12%, 9%);
+  --color-fd-border: hsla(30, 15%, 55%, 28%);
+  --color-fd-primary: oklch(0.55 0.19 36);
+  --color-fd-primary-foreground: hsl(40, 30%, 98%);
+  --color-fd-secondary: hsl(40, 18%, 92%);
+  --color-fd-secondary-foreground: hsl(30, 12%, 9%);
+  --color-fd-accent: hsla(30, 20%, 72%, 30%);
+  --color-fd-accent-foreground: hsl(30, 12%, 9%);
+  --color-fd-ring: oklch(0.55 0.19 36);
+}
+
+.dark,
+.dark #nd-sidebar {
+  --color-fd-background: hsl(30, 8%, 7%);
+  --color-fd-foreground: hsl(40, 20%, 91%);
+  --color-fd-muted: hsl(30, 6%, 12%);
+  --color-fd-muted-foreground: hsla(40, 10%, 72%, 0.85);
+  --color-fd-popover: hsl(30, 7%, 10%);
+  --color-fd-popover-foreground: hsl(40, 15%, 88%);
+  --color-fd-card: hsl(30, 7%, 9.5%);
+  --color-fd-card-foreground: hsl(40, 20%, 94%);
+  --color-fd-border: hsla(40, 10%, 50%, 18%);
+  --color-fd-primary: oklch(0.74 0.15 48);
+  --color-fd-primary-foreground: hsl(30, 8%, 8%);
+  --color-fd-secondary: hsl(30, 6%, 13%);
+  --color-fd-secondary-foreground: hsl(40, 20%, 91%);
+  --color-fd-accent: hsla(40, 10%, 45%, 25%);
+  --color-fd-accent-foreground: hsl(40, 20%, 92%);
+  --color-fd-ring: oklch(0.74 0.15 48);
+}
+
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
