@@ -51,4 +51,4 @@ Finish with:
 - A list of things you could NOT check from code alone (dashboard settings, provider config, backups, MFA) that I must check myself.
 ```
 
-**After:** fix critical and high findings one at a time with [02-build.md](02-build.md), then run this audit again in another fresh session until none remain. Do the [two-account test](../docs/03-data-access.md#the-two-account-test-do-this-before-every-launch) yourself; no AI can fully replace it.
+**After:** fix critical and high findings one at a time with [02-build.md](02-build.md), then run this audit again in another fresh session until none remain. Do the [two-account test](../content/ship/03-data-access.md#the-two-account-test-do-this-before-every-launch) yourself; no AI can fully replace it.
