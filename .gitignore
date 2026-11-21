@@ -4,3 +4,11 @@ node_modules
 .env.*
 !.env.example
 .DS_Store
+
+# Documentation site (site/): dependencies and build output
+site/node_modules
+site/.next
+site/out
+site/.source
+site/next-env.d.ts
+site/tsconfig.tsbuildinfo
