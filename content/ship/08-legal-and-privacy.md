@@ -1,4 +1,7 @@
-# 08 · Legal and privacy
+---
+title: "Legal and privacy"
+description: "Privacy policy, terms, consent, data rights and the laws you will hear about. A checklist, not legal advice."
+---
 
 > This is a practical checklist, not legal advice. Laws differ by country and change. Once you have paying customers or handle sensitive data, pay a lawyer for an hour to review your policies.
 
@@ -49,7 +52,7 @@ The safest personal data is the data you never collected. For every field in you
 | **CCPA / CPRA** | Users in California, above certain business size thresholds | Right to know, delete, and opt out of data "sale/sharing" |
 | **CAN-SPAM and similar** | You send marketing email | Accurate sender, physical address, working unsubscribe |
 | **COPPA and similar** | Your service is aimed at children (under 13 in the US) | Parental consent. If you're not built for kids, say so in your terms and don't market to them |
-| **Accessibility laws** (e.g. ADA, European Accessibility Act) | Depends on country, sector and company size | Aim for WCAG 2.2 AA anyway; it's also better UX (see [10 Customer-ready](10-customer-ready.md)) |
+| **Accessibility laws** (e.g. ADA, European Accessibility Act) | Depends on country, sector and company size | Aim for WCAG 2.2 AA anyway; it's also better UX (see [10 Customer-ready](./10-customer-ready.md)) |
 
 ## Sensitive data needs extra care
 
@@ -57,7 +60,7 @@ Health data, financial data, government IDs, biometrics, precise location, child
 
 ## Business basics
 
-- Decide how you'll handle sales tax/VAT/GST. A Merchant of Record payment provider handles this for you ([07 Payments](07-payments.md)).
+- Decide how you'll handle sales tax/VAT/GST. A Merchant of Record payment provider handles this for you ([07 Payments](./07-payments.md)).
 - Check the open-source licenses of your dependencies. MIT, Apache-2.0 and BSD are easy. GPL/AGPL can impose obligations on your own code; ask before shipping those in a commercial product.
 - Check your hosting plan allows commercial use. Some free tiers (for example Vercel's Hobby plan) are restricted to non-commercial, personal use.
 
