@@ -32,9 +32,11 @@ Plus the knowledge behind them:
 
 | Folder | What's inside |
 |---|---|
-| [`docs/`](docs/) | Plain-language guides: security, data access, scalability, reliability, observability, payments, legal, testing, customer-readiness |
-| [`checklists/pre-launch.md`](checklists/pre-launch.md) | The full go/no-go list, marked blocker vs. should-fix |
-| [`playbooks/`](playbooks/) | Stack-specific guides. Currently: [Next.js + Supabase + Vercel](playbooks/nextjs-supabase-vercel.md) |
+| [`content/ship/`](content/ship/) | Plain-language guides: security, data access, scalability, reliability, observability, payments, legal, testing, customer-readiness |
+| [`content/ship/pre-launch.md`](content/ship/pre-launch.md) | The full go/no-go list, marked blocker vs. should-fix |
+| [`content/ship/playbooks/`](content/ship/playbooks/) | Stack-specific guides. Currently: [Next.js + Supabase + Vercel](content/ship/playbooks/nextjs-supabase-vercel.md) |
+| [`content/learn/`](content/learn/) | A system design curriculum in 11 parts, from foundations to case studies. Lessons are being written |
+| [`site/`](site/) | The documentation website built from `content/`, live at [aryanpatel-bit.github.io/Vibe-to-Production](https://aryanpatel-bit.github.io/Vibe-to-Production/) |
 | [`template/`](template/) | A small working Next.js + Supabase app with auth, row-level security, rate limiting, validation, logging, error tracking, security headers and tests already wired. Copy from it or start from it |
 
 ## Quick start
@@ -73,18 +75,18 @@ It works in Claude Code, Cursor, Codex and other agents that can run terminal co
 Can't run terminal commands in your tool? Copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into your project by hand, following the README in each folder.
 
 **Starting a new project**
-1. Read [`docs/00-start-here.md`](docs/00-start-here.md) (10 minutes).
+1. Read [`content/ship/00-start-here.md`](content/ship/00-start-here.md) (10 minutes).
 2. Run the [plan prompt](prompts/01-plan.md) to produce your `SPEC.md`.
 3. On Next.js + Supabase? Copy [`template/`](template/) as your starting point.
 4. Install the rules and guardrails with the [one-prompt install](#install-in-one-prompt), or copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into your project by hand.
 5. Build one feature at a time with the [build](prompts/02-build.md) and [review](prompts/03-review.md) prompts.
-6. Before launch: [security audit](prompts/04-security-audit.md), [launch review](prompts/05-launch.md), [pre-launch checklist](checklists/pre-launch.md).
+6. Before launch: [security audit](prompts/04-security-audit.md), [launch review](prompts/05-launch.md), [pre-launch checklist](content/ship/pre-launch.md).
 
 **Already built something?**
 1. Paste the [one-prompt install](#install-in-one-prompt) into your AI tool inside the project. (Manual fallback: copy [`agent-rules/`](agent-rules/) and [`guardrails/`](guardrails/) into it.)
 2. Run the [security audit prompt](prompts/04-security-audit.md) in a fresh AI session.
-3. Do the [two-account test](docs/03-data-access.md#the-two-account-test-do-this-before-every-launch) yourself.
-4. Fix critical and high findings first, then work through the [pre-launch checklist](checklists/pre-launch.md).
+3. Do the [two-account test](content/ship/03-data-access.md#the-two-account-test-do-this-before-every-launch) yourself.
+4. Fix critical and high findings first, then work through the [pre-launch checklist](content/ship/pre-launch.md).
 
 ## The ten rules, if you read nothing else
 
