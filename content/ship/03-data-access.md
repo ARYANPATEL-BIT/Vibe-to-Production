@@ -1,4 +1,7 @@
-# 03 · Data access: who can touch what
+---
+title: "Data access"
+description: "Who can touch what: row-level security, the mistakes AI makes with it, and the two-account test."
+---
 
 If you read only one guide, read this one. Broken data access is the most common serious flaw in AI-built apps, and the one with the worst consequences: one user reading or changing everyone else's data.
 
@@ -27,7 +30,7 @@ The strongest setup does both: the server checks, and the database enforces the 
 
 If your frontend talks to Supabase directly (it does, with the publishable key), **RLS is your entire security model.** The key in the browser is public by design; RLS is what stops it from reading every table.
 
-The pattern for every table with user data, from the template's [migration](../template/supabase/migrations/20261102000000_create_notes.sql):
+The pattern for every table with user data, from the template's [migration](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/supabase/migrations/20261102000000_create_notes.sql):
 
 ```sql
 create table public.notes (
