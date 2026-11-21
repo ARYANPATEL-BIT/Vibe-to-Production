@@ -1,4 +1,7 @@
-# 01 · Plan before you prompt
+---
+title: "Plan before you prompt"
+description: "Write a one-page spec with an access table before the AI makes those decisions for you."
+---
 
 Most security holes and scaling problems are decided before the first line of code: by what data you store, who can see it, and how it flows. If you skip planning, the AI makes those decisions for you, silently, and usually picks whatever is fastest to type.
 
@@ -6,7 +9,7 @@ Planning doesn't mean a 30-page document. It means answering the questions below
 
 ## The one-page spec
 
-Copy this into `SPEC.md` and fill it in. Use [`prompts/01-plan.md`](../prompts/01-plan.md) to have the AI interview you and draft it.
+Copy this into `SPEC.md` and fill it in. Use [`prompts/01-plan.md`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/prompts/01-plan.md) to have the AI interview you and draft it.
 
 ```markdown
 # What we're building
@@ -48,7 +51,7 @@ This is the single most valuable thing you'll write. For every type of data, fil
 | Invoice | Owner, admins | System only (payment webhook) | Nobody | Nobody |
 | Admin flag | Owner, admins | Nobody | Admins | Admins |
 
-Every cell becomes a database rule (see [03 Data access](03-data-access.md)). Cells that say "nobody" or "system only" matter most: they're the ones the AI will forget, letting users edit their own invoices or make themselves admin.
+Every cell becomes a database rule (see [03 Data access](./03-data-access.md)). Cells that say "nobody" or "system only" matter most: they're the ones the AI will forget, letting users edit their own invoices or make themselves admin.
 
 ### 2. What's the worst thing a user could do?
 
@@ -77,7 +80,7 @@ You don't need the "best" stack. You need one that the AI knows extremely well, 
 
 | If you want… | Reasonable default | Why |
 |---|---|---|
-| Web app with users and data | Next.js + Supabase | Huge amount of AI training data, auth and database included, free tiers. See the [playbook](../playbooks/nextjs-supabase-vercel.md) |
+| Web app with users and data | Next.js + Supabase | Huge amount of AI training data, auth and database included, free tiers. See the [playbook](./playbooks/nextjs-supabase-vercel.md) |
 | Mobile app | Expo (React Native) + Supabase | Same backend as web |
 | Simple marketing site | Astro or plain Next.js, no database | Less to secure |
 
