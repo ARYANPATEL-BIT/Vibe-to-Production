@@ -1,4 +1,7 @@
-# 09 · Testing
+---
+title: "Testing"
+description: "Test the few things that would hurt most, and stop the AI from cheating on its tests."
+---
 
 You don't need 100% test coverage. You need tests on the few things that would hurt most if they silently broke, and you need to stop the AI from cheating on them.
 
@@ -6,10 +9,10 @@ You don't need 100% test coverage. You need tests on the few things that would h
 
 | Priority | What | How | Why |
 |---|---|---|---|
-| 1 | **Permissions:** user A can't touch user B's data | The [two-account test](03-data-access.md#the-two-account-test-do-this-before-every-launch), plus automated tests once you can | Worst-case bug, invisible in normal use |
+| 1 | **Permissions:** user A can't touch user B's data | The [two-account test](./03-data-access.md#the-two-account-test-do-this-before-every-launch), plus automated tests once you can | Worst-case bug, invisible in normal use |
 | 2 | **Money:** entitlements, plan limits, credit math, webhook handling | Unit tests | Bugs cost money directly |
 | 3 | **Critical flows:** sign up → core action → pay | End-to-end tests with [Playwright](https://playwright.dev) (free) | If these break, the business stops |
-| 4 | **Input validation:** schemas reject bad input | Unit tests (the template has [examples](../template/src/lib/validation.test.ts)) | Cheap, fast, catches regressions |
+| 4 | **Input validation:** schemas reject bad input | Unit tests (the template has [examples](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/src/lib/validation.test.ts)) | Cheap, fast, catches regressions |
 | 5 | Everything else | As you go | |
 
 ## Every bug becomes a test
@@ -41,7 +44,7 @@ You know the business rules. The AI knows the test syntax. That split works.
 
 ## Run tests automatically
 
-Tests that only run when you remember are tests that don't run. The [CI guardrail](../guardrails/README.md) runs lint, typecheck, tests and build on every push and pull request. A red check means don't merge.
+Tests that only run when you remember are tests that don't run. The [CI guardrail](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/guardrails/README.md) runs lint, typecheck, tests and build on every push and pull request. A red check means don't merge.
 
 ## Done when
 
