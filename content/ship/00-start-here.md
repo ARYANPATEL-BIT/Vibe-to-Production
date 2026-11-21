@@ -1,4 +1,7 @@
-# 00 · Start here
+---
+title: "Start here"
+description: "What production-ready means, how the three layers work, and the order to read the guides in."
+---
 
 ## The uncomfortable truth
 
@@ -21,12 +24,12 @@ An app is production-ready when it can survive four things:
 
 | It survives… | Which means… | Guide |
 |---|---|---|
-| **Attackers** | Secrets hidden, every request checks who's asking and whether they're allowed, inputs validated, abuse rate-limited | [02 Security](02-security.md), [03 Data access](03-data-access.md) |
-| **Growth** | Queries bounded and indexed, slow work moved out of requests, costs capped | [04 Scalability](04-scalability.md) |
-| **Failure** | Errors handled, data backed up and restorable, safe deploys and rollbacks | [05 Reliability](05-reliability.md) |
-| **You not watching** | You get alerted when something breaks, and can see why | [06 Observability](06-observability.md) |
+| **Attackers** | Secrets hidden, every request checks who's asking and whether they're allowed, inputs validated, abuse rate-limited | [02 Security](./02-security.md), [03 Data access](./03-data-access.md) |
+| **Growth** | Queries bounded and indexed, slow work moved out of requests, costs capped | [04 Scalability](./04-scalability.md) |
+| **Failure** | Errors handled, data backed up and restorable, safe deploys and rollbacks | [05 Reliability](./05-reliability.md) |
+| **You not watching** | You get alerted when something breaks, and can see why | [06 Observability](./06-observability.md) |
 
-And it's **customer-ready** when it also handles money correctly, follows the law, and feels trustworthy: [07 Payments](07-payments.md), [08 Legal & privacy](08-legal-and-privacy.md), [10 Customer-ready](10-customer-ready.md).
+And it's **customer-ready** when it also handles money correctly, follows the law, and feels trustworthy: [07 Payments](./07-payments.md), [08 Legal & privacy](./08-legal-and-privacy.md), [10 Customer-ready](./10-customer-ready.md).
 
 ## How this repo works: three layers
 
@@ -41,7 +44,7 @@ Reading guides doesn't make code safe. AI agents forget, you skim, deadlines hap
                                 no matter who (or what) wrote it.
 ```
 
-The guides in `docs/` explain the *why* behind all three, so you can tell when the AI is wrong.
+The guides in `content/ship/` explain the *why* behind all three, so you can tell when the AI is wrong.
 
 ## The workflow
 
@@ -54,7 +57,7 @@ The guides in `docs/` explain the *why* behind all three, so you can tell when t
    └────────── guardrails run on every commit ──────┘
 ```
 
-1. **Plan** before any code. Describe users, data and who can see what. ([01 Plan](01-plan-before-you-prompt.md))
+1. **Plan** before any code. Describe users, data and who can see what. ([01 Plan](./01-plan-before-you-prompt.md))
 2. **Build** one feature at a time, small enough to review.
 3. **Review** each change with a fresh AI session acting as a skeptical senior engineer.
 4. **Audit** security before anything touches real users or real money.
@@ -63,24 +66,24 @@ The guides in `docs/` explain the *why* behind all three, so you can tell when t
 ## Setup in 10 minutes
 
 1. Copy `agent-rules/AGENTS.md` and `agent-rules/CLAUDE.md` into the root of your project. Using Cursor? Also copy `agent-rules/.cursor/`. Using Claude Code? Also copy `agent-rules/.claude/`.
-2. Copy everything in `guardrails/` into your project root and follow [guardrails/README.md](../guardrails/README.md).
-3. Starting fresh on Next.js + Supabase? Start from [`template/`](../template/) and read the [playbook](../playbooks/nextjs-supabase-vercel.md).
-4. Bookmark [`checklists/pre-launch.md`](../checklists/pre-launch.md).
+2. Copy everything in `guardrails/` into your project root and follow [guardrails/README.md](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/guardrails/README.md).
+3. Starting fresh on Next.js + Supabase? Start from [`template/`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/tree/main/template) and read the [playbook](./playbooks/nextjs-supabase-vercel.md).
+4. Bookmark the [pre-launch checklist](./pre-launch.md).
 
 ## All guides
 
 | # | Guide | Read when |
 |---|---|---|
-| 01 | [Plan before you prompt](01-plan-before-you-prompt.md) | Before any code |
-| 02 | [Security](02-security.md) | Before your first real user |
-| 03 | [Data access](03-data-access.md) | Before your first real user. The most important one |
-| 04 | [Scalability](04-scalability.md) | Before you have real traffic |
-| 05 | [Reliability](05-reliability.md) | Before you have data you can't lose |
-| 06 | [Observability](06-observability.md) | Before launch |
-| 07 | [Payments](07-payments.md) | Before you take money |
-| 08 | [Legal & privacy](08-legal-and-privacy.md) | Before launch |
-| 09 | [Testing](09-testing.md) | From the first feature |
-| 10 | [Customer-ready](10-customer-ready.md) | Before launch |
+| 01 | [Plan before you prompt](./01-plan-before-you-prompt.md) | Before any code |
+| 02 | [Security](./02-security.md) | Before your first real user |
+| 03 | [Data access](./03-data-access.md) | Before your first real user. The most important one |
+| 04 | [Scalability](./04-scalability.md) | Before you have real traffic |
+| 05 | [Reliability](./05-reliability.md) | Before you have data you can't lose |
+| 06 | [Observability](./06-observability.md) | Before launch |
+| 07 | [Payments](./07-payments.md) | Before you take money |
+| 08 | [Legal & privacy](./08-legal-and-privacy.md) | Before launch |
+| 09 | [Testing](./09-testing.md) | From the first feature |
+| 10 | [Customer-ready](./10-customer-ready.md) | Before launch |
 
 ## Rules for working with AI
 
