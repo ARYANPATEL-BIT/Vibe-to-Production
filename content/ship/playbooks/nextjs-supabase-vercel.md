@@ -1,6 +1,9 @@
-# Playbook: Next.js + Supabase + Vercel
+---
+title: "Next.js + Supabase + Vercel"
+description: "The concrete version of the guides for the most common vibe-coding stack, and the patterns AI gets wrong in it."
+---
 
-The guides in `docs/` are stack-agnostic. This playbook is the concrete version for the most common vibe-coding stack. The [`template/`](../template/) implements everything here.
+The guides in `content/ship/` are stack-agnostic. This playbook is the concrete version for the most common vibe-coding stack. The [`template/`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/tree/main/template) implements everything here.
 
 Versions this was written against: Next.js 16, `@supabase/ssr` 0.12, `@supabase/supabase-js` 2.x. If your AI generates code that looks different from this, it may be using older patterns from its training data. Point it at this file.
 
@@ -11,7 +14,7 @@ Versions this was written against: Next.js 16, `@supabase/ssr` 0.12, `@supabase/
 | Service | What's free | What bites you |
 |---|---|---|
 | **Vercel Hobby** | Hosting, previews, HTTPS | **Non-commercial, personal use only** per Vercel's own terms. Charging customers means Vercel Pro, or a host whose free tier allows commercial use (read the terms; e.g. Cloudflare Workers via the OpenNext adapter). Runtime logs kept for 1 hour |
-| **Supabase Free** | Postgres, auth, storage, 2 projects | Projects **pause after a week of inactivity**. 500 MB database. Daily backups are a paid-plan feature, so set up your own ([guardrails/backup workflow](../guardrails/README.md#optional-nightly-database-backup)). Built-in email sender is for testing only |
+| **Supabase Free** | Postgres, auth, storage, 2 projects | Projects **pause after a week of inactivity**. 500 MB database. Daily backups are a paid-plan feature, so set up your own ([guardrails/backup workflow](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/guardrails/README.md#optional-nightly-database-backup)). Built-in email sender is for testing only |
 | **Upstash Redis** | Rate limiting | Request quota per month; fine for early stage |
 | **Sentry Developer** | Error tracking, 1 user | Monthly event quota; sample traces (template uses 10%) |
 
@@ -58,7 +61,7 @@ Add `import "server-only";` (from the `server-only` npm package) at the top of a
 Every exported function in a `"use server"` file becomes an endpoint anyone can call with any arguments, even if no page uses it.
 
 - Only export real actions from `"use server"` files. Put helpers in normal files.
-- Every action: get the user → check permission → rate limit → validate with zod → do the work. See [`template/src/app/dashboard/actions.ts`](../template/src/app/dashboard/actions.ts).
+- Every action: get the user → check permission → rate limit → validate with zod → do the work. See [`template/src/app/dashboard/actions.ts`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/src/app/dashboard/actions.ts).
 - Arguments are untrusted even when your own form sends them. A hidden `<input name="id">` can be changed by the user.
 
 ---
@@ -66,7 +69,7 @@ Every exported function in a `"use server"` file becomes an endpoint anyone can 
 ## Database
 
 - Create every change as a migration: `npx supabase migration new add_projects`, write SQL, `npx supabase db push`. Commit the file. Don't click-edit tables in production.
-- Every table: owner column, index on it, `enable row level security`, one policy per action, `with check` on insert/update. Pattern in [03 Data access](../docs/03-data-access.md).
+- Every table: owner column, index on it, `enable row level security`, one policy per action, `with check` on insert/update. Pattern in [03 Data access](../03-data-access.md).
 - Run **Advisors** in the Supabase dashboard (Security and Performance) after every schema change. They flag tables without RLS, risky functions and missing indexes.
 - Views: create with `with (security_invoker = true)` or they ignore RLS.
 - Need a function that touches multiple tables atomically (e.g. "deduct credits and create order")? Write a Postgres function and call it with `supabase.rpc()`, so it runs as one transaction.
