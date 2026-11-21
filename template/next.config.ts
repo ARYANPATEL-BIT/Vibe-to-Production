@@ -4,7 +4,7 @@ import { withSentryConfig } from "@sentry/nextjs/config";
 const isDev = process.env.NODE_ENV !== "production";
 
 // Content Security Policy: tells the browser which sources it may load code and data from.
-// 'unsafe-inline' for scripts is needed by Next.js without nonces. See docs/02-security.md
+// 'unsafe-inline' for scripts is needed by Next.js without nonces. See https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/content/ship/02-security.md
 // for the stricter nonce-based version once you outgrow this.
 const csp = [
   "default-src 'self'",
