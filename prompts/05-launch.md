@@ -1,6 +1,6 @@
 # 05 · Launch readiness
 
-Use the week before launch, in a fresh session. It checks everything in the [pre-launch checklist](../checklists/pre-launch.md) that can be checked from the code, and tells you what's left for you.
+Use the week before launch, in a fresh session. It checks everything in the [pre-launch checklist](../content/ship/pre-launch.md) that can be checked from the code, and tells you what's left for you.
 
 ```text
 We're launching this app to real customers soon. Read AGENTS.md, SPEC.md and checklists/pre-launch.md (if present). Then act as a launch reviewer.
