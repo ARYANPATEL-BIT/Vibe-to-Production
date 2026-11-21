@@ -99,4 +99,4 @@ Open the scratch project's table editor and check your data is there. Uploaded f
 
 ## What guardrails can't catch
 
-Automated tools find known patterns. They won't notice that your "delete project" action forgets to check the user owns the project, or that your RLS policy lets users read each other's invoices. That's what the [security audit prompt](../prompts/04-security-audit.md) and the [two-account test](../docs/03-data-access.md#the-two-account-test-do-this-before-every-launch) are for.
+Automated tools find known patterns. They won't notice that your "delete project" action forgets to check the user owns the project, or that your RLS policy lets users read each other's invoices. That's what the [security audit prompt](../prompts/04-security-audit.md) and the [two-account test](../content/ship/03-data-access.md#the-two-account-test-do-this-before-every-launch) are for.
