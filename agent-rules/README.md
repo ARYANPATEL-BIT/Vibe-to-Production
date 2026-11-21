@@ -22,7 +22,7 @@ Already have a `CLAUDE.md` or `.claude/settings.json`? Merge by hand rather than
 ## Customize
 
 - Fill in the "Project context" section of `CLAUDE.md` (or add one to `AGENTS.md`).
-- Add stack-specific rules at the end of `AGENTS.md`. For Next.js + Supabase, the "Things AI gets wrong" table in the [playbook](../playbooks/nextjs-supabase-vercel.md) translates directly into rules.
+- Add stack-specific rules at the end of `AGENTS.md`. For Next.js + Supabase, the "Things AI gets wrong" table in the [playbook](../content/ship/playbooks/nextjs-supabase-vercel.md) translates directly into rules.
 - Every time the AI makes the same mistake twice, add a one-line rule for it.
 
 ## Limits (read this)
