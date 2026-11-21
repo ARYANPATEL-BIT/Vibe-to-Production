@@ -1,4 +1,7 @@
-# 04 · Scalability
+---
+title: "Scalability"
+description: "The six mistakes that work with 10 rows and fall over at 10,000, and how to fix them."
+---
 
 Honest framing first: **you do not need microservices, Kubernetes or a "scalable architecture" to launch.** A single well-built app on managed services handles tens of thousands of users. Instagram ran on a handful of servers when it was acquired.
 
