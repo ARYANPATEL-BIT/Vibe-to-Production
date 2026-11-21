@@ -1,4 +1,7 @@
-# 06 · Observability
+---
+title: "Observability"
+description: "Find out something broke before your customers do: errors, uptime, logs, analytics and spend alerts."
+---
 
 If you find out your app is broken from a customer's angry email, you're already late. Observability means three things: **knowing** something broke, **finding** what broke, and **seeing** how people actually use the product.
 
@@ -23,7 +26,7 @@ All of the below has a usable free tier.
 
 ## 2. Uptime
 
-- Create a health endpoint that returns 200 when the app is running (template: [`/api/health`](../template/src/app/api/health/route.ts)).
+- Create a health endpoint that returns 200 when the app is running (template: [`/api/health`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/src/app/api/health/route.ts)).
 - Point an uptime monitor at it and at your homepage, checking every few minutes, alerting your phone.
 - Optional: a public status page (most uptime tools include one free) so customers can check before emailing you.
 
@@ -43,7 +46,7 @@ log.error("create note failed", { userId, code: error.code });
 ## 4. Analytics
 
 - Track the handful of events that tell you whether the product works: signed up, completed onboarding, used the core feature, paid, churned. Not every click.
-- Respect consent: in many regions (EU/UK in particular) non-essential analytics cookies need a consent banner. Cookieless analytics (Plausible, Vercel Web Analytics) avoid most of this. See [08 Legal & privacy](08-legal-and-privacy.md).
+- Respect consent: in many regions (EU/UK in particular) non-essential analytics cookies need a consent banner. Cookieless analytics (Plausible, Vercel Web Analytics) avoid most of this. See [08 Legal & privacy](./08-legal-and-privacy.md).
 
 ## 5. A weekly 10-minute check
 
