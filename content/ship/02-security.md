@@ -1,4 +1,7 @@
-# 02 · Security
+---
+title: "Security"
+description: "Secrets, auth, endpoints, input validation, rate limits, uploads, headers and dependencies, each with a test you can run."
+---
 
 The mental model: **the browser belongs to the attacker.** Anything in your frontend code, anything the browser sends, any check that runs in the browser can be read, changed or skipped by anyone with dev tools. Security only exists on the server and in the database.
 
@@ -19,7 +22,7 @@ A secret is anything that grants power: database admin keys, Stripe secret keys,
 - Different keys for development and production. Never use live keys locally.
 - If a secret is ever committed, even for one minute, even in a private repo: **rotate it** (generate a new one in the provider's dashboard and delete the old one). Deleting the commit is not enough; git history and bots have already copied it.
 
-**The guardrails catch:** commits containing known secret formats, committed `.env` files, and live secrets anywhere in git history (see [guardrails](../guardrails/README.md)).
+**The guardrails catch:** commits containing known secret formats, committed `.env` files, and live secrets anywhere in git history (see [guardrails](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/guardrails/README.md)).
 
 **Test it yourself:** Open your deployed site → right-click → Inspect → Sources tab. Press Ctrl/Cmd+Shift+F and search for `sk_`, `secret`, `service_role`, `sb_secret`, `api_key`, `password`. You should find nothing sensitive.
 
@@ -41,7 +44,7 @@ A secret is anything that grants power: database admin keys, Stripe secret keys,
 
 ## 3. Authorization (are you allowed?)
 
-This is where most vibe-coded apps fail, and it gets its own guide: **[03 Data access](03-data-access.md)**.
+This is where most vibe-coded apps fail, and it gets its own guide: **[03 Data access](./03-data-access.md)**.
 
 The short version: being signed in is not permission. Every read and write must check that *this* user is allowed to touch *this* record, and that check must happen in the database or on the server.
 
@@ -61,7 +64,7 @@ Hiding a button doesn't protect the action behind it. If an admin-only "Delete u
 4. **Validate:** is the input the right shape, type and size? Use a schema library (zod, valibot) and reject anything else.
 5. Only then: do the work.
 
-The template's [`dashboard/actions.ts`](../template/src/app/dashboard/actions.ts) shows this order.
+The template's [`dashboard/actions.ts`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/src/app/dashboard/actions.ts) shows this order.
 
 **Test it yourself:** Ask your AI: *"List every API route, server action, edge function and webhook in this project. For each, show me the exact lines that do authentication, authorization, rate limiting and validation. Mark any that are missing."*
 
@@ -111,7 +114,7 @@ Without rate limits, one script can sign up 10,000 fake accounts, send 10,000 em
 
 ## 8. Security headers
 
-Headers tell the browser to block whole categories of attacks. Set them once in your framework config (the template does this in [`next.config.ts`](../template/next.config.ts)):
+Headers tell the browser to block whole categories of attacks. Set them once in your framework config (the template does this in [`next.config.ts`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/next.config.ts)):
 
 | Header | Blocks |
 |---|---|
@@ -177,4 +180,4 @@ If your product itself calls an AI model, add these:
 - [ ] Security headers score A on securityheaders.com
 - [ ] Every dependency is real, popular, and audited in CI
 - [ ] MFA on every account that can touch production
-- [ ] [`prompts/04-security-audit.md`](../prompts/04-security-audit.md) run in a fresh session with no high-severity findings left
+- [ ] [`prompts/04-security-audit.md`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/prompts/04-security-audit.md) run in a fresh session with no high-severity findings left
