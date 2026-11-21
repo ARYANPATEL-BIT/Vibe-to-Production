@@ -1,14 +1,19 @@
-# Pre-launch checklist
+---
+title: "Pre-launch checklist"
+description: "The full go/no-go list before real users or real money touch your app, marked blocker vs. should-fix."
+---
 
 Go through this before real users or real money touch your app. Copy it into an issue or your notes and tick items off.
 
 **🛑 Blocker:** do not launch without it. **⚠️ Should:** fix within the first weeks. Each section links to the guide that explains why.
 
-You can also have the AI check most of this for you with [`prompts/05-launch.md`](../prompts/05-launch.md), but tick the 👤 items yourself: they need a human.
+You can also have the AI check most of this for you with [`prompts/05-launch.md`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/prompts/05-launch.md), but tick the 👤 items yourself: they need a human.
 
 ---
 
-## Secrets — [guide](../docs/02-security.md#1-secrets)
+## Secrets
+
+Guide: [02 Security](./02-security.md#1-secrets)
 
 - [ ] 🛑 No secret keys in frontend code (searched browser Sources for `sk_`, `secret`, `service_role`, `sb_secret`, `api_key`) 👤
 - [ ] 🛑 `.env` files are gitignored; secret scan of full git history is clean (CI security workflow green)
@@ -16,7 +21,9 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] 🛑 Production uses live keys; local and preview use test keys
 - [ ] 🛑 MFA on GitHub, hosting, database, domain registrar, payment and email provider accounts 👤
 
-## Auth and data access — [guide](../docs/03-data-access.md)
+## Auth and data access
+
+Guide: [03 Data access](./03-data-access.md)
 
 - [ ] 🛑 Managed auth provider; server verifies sessions with the provider's verify function
 - [ ] 🛑 Every table with user data has RLS/security rules with explicit per-action policies
@@ -26,7 +33,9 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] 🛑 Storage buckets are private with per-user policies
 - [ ] ⚠️ Login errors don't reveal whether an account exists
 
-## Endpoints — [guide](../docs/02-security.md#4-every-server-endpoint-is-public)
+## Endpoints
+
+Guide: [02 Security](./02-security.md#4-every-server-endpoint-is-public)
 
 - [ ] 🛑 Every API route / server action / function authenticates, authorizes, rate-limits and validates input
 - [ ] 🛑 Rate limits on login, signup, password reset, email/SMS sending and every paid API call
@@ -35,7 +44,9 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] ⚠️ Security headers score A on securityheaders.com 👤
 - [ ] ⚠️ CAPTCHA (e.g. Cloudflare Turnstile) on signup and contact forms
 
-## Payments — [guide](../docs/07-payments.md)
+## Payments
+
+Guide: [07 Payments](./07-payments.md)
 
 - [ ] 🛑 Prices decided server-side; access granted only by verified webhooks
 - [ ] 🛑 Webhook handler idempotent (event IDs stored with unique constraint)
@@ -44,7 +55,9 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] ⚠️ Failed payment, cancellation, refund and dispute paths handled
 - [ ] ⚠️ Self-serve cancel and update card
 
-## Reliability — [guide](../docs/05-reliability.md)
+## Reliability
+
+Guide: [05 Reliability](./05-reliability.md)
 
 - [ ] 🛑 Database backups exist and one restore has been tested 👤
 - [ ] 🛑 Production has its own database and keys, separate from local and preview
@@ -52,21 +65,27 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] ⚠️ You've practiced a rollback 👤
 - [ ] ⚠️ Every page and form has an error state; global error page exists
 
-## Scalability — [guide](../docs/04-scalability.md)
+## Scalability
+
+Guide: [04 Scalability](./04-scalability.md)
 
 - [ ] 🛑 Every list query has a limit/pagination
 - [ ] ⚠️ Indexes on every common filter/sort column and foreign key
 - [ ] ⚠️ No queries inside loops; slow work moved to background jobs or has timeouts
 - [ ] ⚠️ Cost per active user known; budget alerts on 👤
 
-## Observability — [guide](../docs/06-observability.md)
+## Observability
+
+Guide: [06 Observability](./06-observability.md)
 
 - [ ] 🛑 Error tracking on server and browser, alerting you on new errors
 - [ ] 🛑 Uptime monitor on the site and health endpoint, alerting your phone 👤
 - [ ] ⚠️ Structured logs with IDs and no secrets
 - [ ] ⚠️ Key product events tracked (signup, activation, payment)
 
-## Legal — [guide](../docs/08-legal-and-privacy.md)
+## Legal
+
+Guide: [08 Legal and privacy](./08-legal-and-privacy.md)
 
 - [ ] 🛑 Accurate privacy policy listing every processor 👤
 - [ ] 🛑 Terms of service and refund policy linked in footer and at checkout 👤
@@ -75,7 +94,9 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] ⚠️ Cookie consent if using non-essential trackers
 - [ ] ⚠️ Marketing emails have one-click unsubscribe
 
-## Customer experience — [guide](../docs/10-customer-ready.md)
+## Customer experience
+
+Guide: [10 Customer-ready](./10-customer-ready.md)
 
 - [ ] 🛑 Emails sent from your domain via a real provider, with SPF/DKIM/DMARC 👤
 - [ ] 🛑 Visible support contact
@@ -83,7 +104,9 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 - [ ] ⚠️ Works at 375px width; keyboard-navigable; axe DevTools clean 👤
 - [ ] ⚠️ Custom domain, favicon, share image, 404 page
 
-## Guardrails — [guide](../guardrails/README.md)
+## Guardrails
+
+Guide: [Guardrails README](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/guardrails/README.md)
 
 - [ ] 🛑 CI (lint, typecheck, tests, build, audit) green on main
 - [ ] 🛑 Security workflow (secret scan, static analysis) green
@@ -92,5 +115,5 @@ You can also have the AI check most of this for you with [`prompts/05-launch.md`
 
 ## Final pass
 
-- [ ] 🛑 [`prompts/04-security-audit.md`](../prompts/04-security-audit.md) run in a **fresh** AI session; all critical/high findings fixed
+- [ ] 🛑 [`prompts/04-security-audit.md`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/prompts/04-security-audit.md) run in a **fresh** AI session; all critical/high findings fixed
 - [ ] 🛑 You can explain, in plain words, how a user's data is protected 👤
