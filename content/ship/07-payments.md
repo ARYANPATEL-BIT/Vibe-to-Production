@@ -1,4 +1,7 @@
-# 07 · Payments
+---
+title: "Payments"
+description: "Hosted checkout, server-side prices, verified idempotent webhooks and the full subscription lifecycle."
+---
 
 Money bugs are the most expensive bugs: you either give away your product, charge someone twice, or lose a chargeback dispute. The rules are few and strict.
 
