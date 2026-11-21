@@ -1,4 +1,7 @@
-# 10 · Customer-ready
+---
+title: "Customer-ready"
+description: "The four screen states, mobile, speed, accessibility, email deliverability and the trust signals people pay for."
+---
 
 Secure and scalable gets you a product that doesn't fail. Customer-ready gets you a product people trust enough to pay for. Most of this is small, and AI is great at it once you ask.
 
