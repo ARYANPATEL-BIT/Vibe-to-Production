@@ -1,0 +1,20 @@
+{
+  "title": "Ship it",
+  "description": "Take a vibe-coded app to production",
+  "root": true,
+  "pages": [
+    "00-start-here",
+    "01-plan-before-you-prompt",
+    "02-security",
+    "03-data-access",
+    "04-scalability",
+    "05-reliability",
+    "06-observability",
+    "07-payments",
+    "08-legal-and-privacy",
+    "09-testing",
+    "10-customer-ready",
+    "pre-launch",
+    "playbooks"
+  ]
+}
