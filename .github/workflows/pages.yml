@@ -1,0 +1,65 @@
+# Builds the documentation site in site/ and deploys it to GitHub Pages.
+# Needs Settings -> Pages -> Source: GitHub Actions. Free on public repos.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    # The site reads content/ for the docs, and README.md, agent-rules/, prompts/
+    # and guardrails/ for the Get it pages.
+    paths:
+      - "site/**"
+      - "content/**"
+      - "README.md"
+      - "agent-rules/**"
+      - "prompts/**"
+      - "guardrails/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deploy at a time; let a running deploy finish instead of cancelling it halfway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
