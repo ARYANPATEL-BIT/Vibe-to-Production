@@ -1,0 +1,18 @@
+{
+  "title": "Learn",
+  "description": "A system design curriculum",
+  "root": true,
+  "pages": [
+    "00-foundations",
+    "01-building-blocks",
+    "02-scaling",
+    "03-distributed-systems",
+    "04-reliability-and-ops",
+    "05-security-by-design",
+    "06-architecture-patterns",
+    "07-data-at-scale",
+    "08-ai-systems",
+    "09-case-studies",
+    "10-the-method"
+  ]
+}
