@@ -1,4 +1,7 @@
-# 05 · Reliability
+---
+title: "Reliability"
+description: "Backups you have restored, migrations, environments, rollbacks, error handling and idempotency."
+---
 
 Things will break: a provider has an outage, a deploy has a bug, a migration goes wrong, a webhook arrives twice. Reliability isn't preventing every failure. It's making sure failures are small, visible and recoverable.
 
@@ -40,7 +43,7 @@ A backup you've never restored is a hope, not a backup.
 
 - Every external call can fail: databases, payment APIs, AI APIs, email. Decide what the user sees when it does. "Couldn't save, please try again" beats a blank screen.
 - Show error states in the UI for every data load and every form submit.
-- Add an error boundary / global error page so a crash in one component doesn't white-screen the app (the template has [`global-error.tsx`](../template/src/app/global-error.tsx)).
+- Add an error boundary / global error page so a crash in one component doesn't white-screen the app (the template has [`global-error.tsx`](https://github.com/ARYANPATEL-BIT/Vibe-to-Production/blob/main/template/src/app/global-error.tsx)).
 - Set timeouts on outbound calls. Retry only things that are safe to retry, with a growing delay between attempts.
 
 ## 6. Idempotency: doing it twice must be safe
@@ -48,7 +51,7 @@ A backup you've never restored is a hope, not a backup.
 Networks retry. Users double-click. Webhooks get delivered more than once (payment providers say so explicitly). If "charge the customer", "grant credits" or "send the welcome email" runs twice, you have a real problem.
 
 - Disable submit buttons while a request is in flight.
-- For webhooks, store the event ID and skip events you've already processed (see [07 Payments](07-payments.md)).
+- For webhooks, store the event ID and skip events you've already processed (see [07 Payments](./07-payments.md)).
 - Use database unique constraints to make duplicates impossible, not just unlikely.
 
 ## 7. Depend on fewer things
