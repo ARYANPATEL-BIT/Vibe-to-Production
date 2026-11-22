@@ -25,7 +25,7 @@ None of these are hard to prevent. They're just invisible until they go wrong, a
 | Layer | Folder | What it does |
 |---|---|---|
 | **1. Rules** | [`agent-rules/`](agent-rules/) | Drop-in `AGENTS.md` / `CLAUDE.md` / Cursor rules. Your AI reads them every session and writes safer code by default |
-| **2. Prompts** | [`prompts/`](prompts/) | Copy-paste prompts for each phase: plan, build, review, security audit, launch, incident |
+| **2. Prompts** | [`prompts/`](prompts/) | Copy-paste prompts for each phase: plan, design, build, review, security audit, launch, incident |
 | **3. Guardrails** | [`guardrails/`](guardrails/) | Git hooks and GitHub Actions that block secrets, broken builds, failing tests and vulnerable dependencies, no matter who wrote the code |
 
 Plus the knowledge behind them:
@@ -35,7 +35,7 @@ Plus the knowledge behind them:
 | [`content/ship/`](content/ship/) | Plain-language guides: security, data access, scalability, reliability, observability, payments, legal, testing, customer-readiness |
 | [`content/ship/pre-launch.md`](content/ship/pre-launch.md) | The full go/no-go list, marked blocker vs. should-fix |
 | [`content/ship/playbooks/`](content/ship/playbooks/) | Stack-specific guides. Currently: [Next.js + Supabase + Vercel](content/ship/playbooks/nextjs-supabase-vercel.md) |
-| [`content/learn/`](content/learn/) | A system design curriculum in 11 parts, from foundations to case studies. Lessons are being written |
+| [`content/learn/`](content/learn/) | A system design curriculum in 11 parts, from foundations to case studies. Part 0 (Foundations) is written; the rest is in progress |
 | [`site/`](site/) | The documentation website built from `content/`, live at [aryanpatel-bit.github.io/Vibe-to-Production](https://aryanpatel-bit.github.io/Vibe-to-Production/) |
 | [`template/`](template/) | A small working Next.js + Supabase app with auth, row-level security, rate limiting, validation, logging, error tracking, security headers and tests already wired. Copy from it or start from it |
 
@@ -56,6 +56,7 @@ Then open your project in Claude Code and run `/vibe:setup`. It adds the rules a
 |---|---|
 | `/vibe:setup` | Installs the rules and guardrails into your project |
 | `/vibe:plan [what you want to build]` | Interviews you and writes a `SPEC.md` before any code is written |
+| `/vibe:design [what you're building]` | Estimates your scale and writes a `DESIGN.md` with the simplest architecture that meets the numbers |
 | `/vibe:build [the feature or fix]` | Plans one feature, waits for your OK, builds it and runs the checks |
 | `/vibe:review` | Reviews your latest changes like a skeptical senior engineer |
 | `/vibe:audit` | Runs a full security audit of the whole app |
