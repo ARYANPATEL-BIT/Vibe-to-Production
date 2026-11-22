@@ -32,7 +32,7 @@ If a rule here conflicts with a request, follow the rule and explain the conflic
 
 - Prefer the standard library and packages already in the project. Don't add a dependency for something achievable in a few lines.
 - Before adding any package, confirm it exists, is widely used and actively maintained. Tell the user its name and why it's needed. Never invent package names.
-- Never pin GitHub Actions to `@main` or `@master`; use a version tag.
+- Pin GitHub Actions to a full 40-character commit hash with the version as a comment (`@<sha> # v7.0.1`), never `@main`, `@master` or a bare tag. A tag can be moved to point at new code; a hash can't. Dependabot updates both.
 
 ## Database
 
