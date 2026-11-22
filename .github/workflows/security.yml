@@ -18,11 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0 # full history: a secret deleted later is still leaked
 
-      - uses: trufflesecurity/trufflehog@v3.99.7
+      - uses: trufflesecurity/trufflehog@31ce31ee1abbcc7dc8eee5764c17121c3044c8b2 # v3.99.7
         with:
           extra_args: --results=verified,unknown
 
@@ -34,7 +34,7 @@ jobs:
       image: semgrep/semgrep
     if: github.actor != 'dependabot[bot]'
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Scan for insecure code patterns
         run: semgrep scan --config auto --error
