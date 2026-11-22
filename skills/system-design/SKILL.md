@@ -1,8 +1,10 @@
 ---
 name: system-design
-user-invocable: false
 description: Answers architecture and infrastructure decisions for this project from the vibe-to-prod system design lessons. Use when the user is making or asking about an architecture or infrastructure decision, such as choosing a database, caching, queues or background jobs, real-time features, scaling, file storage, auth design, rate limiting, hosting regions, or splitting an app into services. Don't use it for routine feature work, bug fixes or code review where no such decision is being made.
+argument-hint: "[the decision you're making]"
 ---
+
+The decision to answer, if one was given: $ARGUMENTS. If nothing follows that colon, answer the decision being discussed in the conversation.
 
 1. **Pick the lessons.** Read only the `description:` line of each lesson in `${CLAUDE_PLUGIN_ROOT}/content/learn/*/*.md` (grep for `^description:`, skip `index.md`). Choose the 1–3 lessons that best match the decision, and read only those in full.
 2. **Learn the project.** Read `SPEC.md` and `DESIGN.md` if they exist, and enough code to know the stack, hosting, regions and rough scale. If the answer depends on a number you don't have (users, data size, budget), ask for it or state your assumption.
