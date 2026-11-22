@@ -66,7 +66,7 @@ Three consequences follow:
 ## Numbers to remember
 
 - A cold start adds anything from a few hundred milliseconds to a couple of seconds to the first request a new copy handles. It depends on the host, the runtime and how much code loads at start-up.
-- Postgres allows 100 connections by default. Each serverless copy opening its own can use that up during one busy minute.
+- Postgres allows 100 connections by default; the small plans of hosted databases often allow fewer, so check your provider's limit. Each serverless copy opening its own can use that up during one busy minute.
 - One small long-running server handles hundreds of simple requests per second. Most early apps never need more than one.
 - Function time limits differ by host and plan, from seconds to several minutes. Look yours up before relying on a long task finishing.
 
