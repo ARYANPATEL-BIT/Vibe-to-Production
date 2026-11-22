@@ -57,6 +57,7 @@ Then open your project in Claude Code and run `/vibe:setup`. It adds the rules a
 | `/vibe:setup` | Installs the rules and guardrails into your project |
 | `/vibe:plan [what you want to build]` | Interviews you and writes a `SPEC.md` before any code is written |
 | `/vibe:design [what you're building]` | Estimates your scale and writes a `DESIGN.md` with the simplest architecture that meets the numbers |
+| `/vibe:system-design [the decision you're making]` | Answers an architecture decision for your project from the lessons, with the trade-off; Claude also uses it on its own when such a decision comes up |
 | `/vibe:build [the feature or fix]` | Plans one feature, waits for your OK, builds it and runs the checks |
 | `/vibe:review` | Reviews your latest changes like a skeptical senior engineer |
 | `/vibe:audit` | Runs a full security audit of the whole app |
