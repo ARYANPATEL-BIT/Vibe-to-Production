@@ -56,7 +56,7 @@ export default function Page() {
           <Link href="/get-it/agent-rules">Agent rules</Link>: the files your AI reads every session.
         </li>
         <li>
-          <Link href="/get-it/prompts">Prompts</Link>: plan, build, review, audit, launch, incident.
+          <Link href="/get-it/prompts">Prompts</Link>: copy-paste prompts for each phase.
         </li>
         <li>
           <Link href="/get-it/guardrails">Guardrails</Link>: hooks and CI checks that block bad code.
