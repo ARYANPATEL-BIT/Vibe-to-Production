@@ -89,20 +89,34 @@ export async function POST(req: Request) {
 
 A user sends `http://169.254.169.254/latest/meta-data/` or `http://localhost:6379` instead of a recipe site. Your server, which sits inside the private network, happily fetches it and hands back the answer. This is SSRF (server-side request forgery), and on some cloud setups it leaks the server's own credentials.
 
-The fix: only allow `https:` URLs, look up the hostname's IP address and refuse private and local ranges (and check again after every redirect), set a short timeout and a size limit, and return only the data you extracted, never the raw response. If you can, allow only a list of known domains. The [security guide](../../ship/02-security.md#5-input-validation-and-injection) lists SSRF with the other injection attacks.
+The fix has to survive **DNS rebinding**: the attacker's domain answers with a harmless public address the first time it's looked up and a private one the next time. Code that checks the hostname's IP and then calls `fetch(url)` looks the name up twice, so it checks one address and connects to another. So:
+
+1. Allow only `https:` URLs.
+2. Look up the hostname once yourself, and refuse the request if any address it returns is private or local.
+3. Connect to that exact checked address, never the hostname again. Most HTTP clients let you pass your own DNS lookup function; have it return the checked address, so the certificate is still checked against the hostname.
+4. Turn off automatic redirects (`redirect: "manual"` in `fetch`) and run the whole check again, from step 1, on every redirect, up to a small limit such as 3.
+5. Set a short timeout and a maximum response size, and return only the data you extracted, never the raw response.
+
+If you can, allow only a list of known domains. The [security guide](../../ship/02-security.md#5-input-validation-and-injection) lists SSRF with the other injection attacks.
 
 ## Tell your AI
 
 ```text
-Find every place where this app's server code connects to a URL, host or IP address that comes from user input: link previews, imports, webhooks the user configures, image or file fetches, "test this URL" buttons. For each one, show me whether it blocks private and local addresses (127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 169.254.0.0/16, and IPv6 equivalents), re-checks after redirects, and has a timeout and size limit.
+Find every place where this app's server code connects to a URL, host or IP address that comes from user input: link previews, imports, webhooks the user configures, image or file fetches, "test this URL" buttons. For each one, show me whether it:
+- allows only https: URLs;
+- looks up the hostname once and blocks the request if any address returned is private or local (0.0.0.0/8, 127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 169.254.0.0/16, ::1, fc00::/7, fe80::/10, and IPv4 addresses written as IPv6, like ::ffff:127.0.0.1);
+- connects to that exact checked address instead of looking the hostname up again, so DNS rebinding can't swap it;
+- turns off automatic redirects and repeats the whole check on every redirect, with a limit on how many it follows;
+- has a timeout and a size limit, and returns only extracted data, never the raw response.
 
 Then list every port this app's infrastructure exposes publicly (database, Redis, admin tools, SSH) and how access to each is restricted. Tell me which of these you can't see from the code and where in which dashboard I should check. Don't change any code yet.
 ```
 
 ## Check your code
 
-- [ ] Server-side fetches of user-supplied URLs allow `https:` only and refuse private and local addresses, including after redirects.
-- [ ] Those fetches have a timeout and a maximum response size.
+- [ ] Server-side fetches of user-supplied URLs allow `https:` only, look the hostname up once, refuse private and local addresses, and connect to the checked address rather than looking the name up again.
+- [ ] Redirects are followed by hand, with the whole check repeated on every one, up to a small limit.
+- [ ] Those fetches have a timeout and a maximum response size, and return only the data you extracted.
 - [ ] The database and Redis aren't open to the whole internet, or at least require strong passwords and TLS, with network restrictions on if your provider offers them.
 - [ ] No admin tool, dashboard or debug server listens on a public port.
 - [ ] Nothing in production depends on `localhost` addresses copied from your laptop's `.env`.
