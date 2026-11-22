@@ -4,6 +4,9 @@ updates:
     directory: /template
     schedule:
       interval: weekly
+    # Wait 7 days before proposing a new release; security updates skip this wait.
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     groups:
       minor-and-patch:
@@ -13,3 +16,6 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Wait 7 days before proposing a new release; security updates skip this wait.
+    cooldown:
+      default-days: 7
