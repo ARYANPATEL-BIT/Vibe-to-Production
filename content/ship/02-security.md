@@ -145,7 +145,7 @@ Every package you install is code from a stranger running with full access to yo
 - Prefer fewer, well-known packages. A 10-line function you understand beats a dependency you don't.
 - Commit your lockfile (`package-lock.json`, `pnpm-lock.yaml`…) so every install gets the exact same versions.
 - Run `npm audit` (or equivalent) in CI and let Dependabot open update PRs. The guardrails do both.
-- In CI, pin third-party GitHub Actions to a version tag, never `@main`.
+- In CI, pin third-party GitHub Actions to a full commit hash with the version as a comment (`uses: actions/checkout@<40-char-sha> # v7.0.1`), never `@main` or a bare tag. A tag can be moved to point at new code; a hash can't. Dependabot updates both the hash and the comment for you.
 
 ---
 
