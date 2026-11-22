@@ -5,6 +5,7 @@ Copy-paste prompts for each phase. Each one makes the AI do the work a senior en
 | Phase | Prompt | When | Fresh session? |
 |---|---|---|---|
 | Plan | [01-plan.md](01-plan.md) | Before writing any code, or before a big feature | Yes |
+| Design | [07-design.md](07-design.md) | After the plan, before building; again when your numbers grow 10x | Yes |
 | Build | [02-build.md](02-build.md) | Each feature or fix | Optional |
 | Review | [03-review.md](03-review.md) | After each change, before merging | **Yes** |
 | Audit | [04-security-audit.md](04-security-audit.md) | Before launch, before taking payments, then monthly | **Yes** |
